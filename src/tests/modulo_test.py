@@ -25,6 +25,8 @@ class TestModuloQuantize(unittest.TestCase):
         self.assertEqual(outs.shape, self.inputs.shape, "Shapes are not the same.")
         grads = tape.gradient(outs, self.inputs)
 
+        self.model.summary()
+
 
 if __name__ == "__main__":
     unittest.main()
