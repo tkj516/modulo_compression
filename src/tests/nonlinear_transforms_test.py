@@ -32,6 +32,7 @@ class TestNonLinearTransform(unittest.TestCase):
             "Not able to see all the GPUs")
 
     def test_train_step(self):
+        # NOTE: You might need to run this on CPU to circumvent OOM issues
         with tf.GradientTape() as tape:
             latents = self.analysis(tf.cast(self.inputs, tf.dtypes.float32))
             recons = self.synthesis(latents)
