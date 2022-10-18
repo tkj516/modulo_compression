@@ -37,18 +37,16 @@ class TestNonLinearTransform(unittest.TestCase):
             recons = self.synthesis(latents)
             loss = self.criterion(self.inputs, recons)
         self.assertEqual(recons.shape, self.inputs.shape,
-                         "Shapes are not the same.")
+                        "Shapes are not the same.")
         grads = tape.gradient(
                     loss, 
                     list(itertools.chain(
                         [
-                            self.analysis.trainable_weights(), 
-                            self.synthesis.trainable_weights()
+                            self.analysis.trainable_weights, 
+                            self.synthesis.trainable_weights
                         ]
                     ))
                 )
-
-        self.model.summary()
 
 
 if __name__ == "__main__":
